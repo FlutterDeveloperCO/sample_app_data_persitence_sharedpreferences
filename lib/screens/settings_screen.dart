@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:sample_app_data_persistence/widgets/widgets.dart';
 
-class SettingsScreen extends StatelessWidget {
+class SettingsScreen extends StatefulWidget {
   static const String routerName = 'Settings';
 
   const SettingsScreen({Key? key}) : super(key: key);
+
+  @override
+  State<SettingsScreen> createState() => _SettingsScreenState();
+}
+
+class _SettingsScreenState extends State<SettingsScreen> {
+  String? name, email;
+  bool isDarkmode = false;
+  int gender = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -20,19 +29,22 @@ class SettingsScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Text(
+              const Text(
                 'Select Your Preferences',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
-              Divider(),
+              const Divider(),
               SwitchListTile.adaptive(
-                  title: Text(
+                  title: const Text(
                     'Dark Mode',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
-                  value: true,
-                  onChanged: (value) {}),
-              Divider(),
+                  value: isDarkmode,
+                  onChanged: (value) {
+                    isDarkmode = value;
+                    setState(() {});
+                  }),
+              const Divider(),
               Text(
                 'Select Your Gender',
                 style: TextStyle(
@@ -43,14 +55,20 @@ class SettingsScreen extends StatelessWidget {
               RadioListTile<int>(
                   title: Text('Male'),
                   value: 1,
-                  groupValue: 1,
-                  onChanged: (value) {}),
+                  groupValue: gender,
+                  onChanged: (value) {
+                    gender = value ?? 1;
+                    setState(() {});
+                  }),
               Divider(),
               RadioListTile<int>(
                   title: Text('Female'),
                   value: 2,
-                  groupValue: 1,
-                  onChanged: (value) {}),
+                  groupValue: gender,
+                  onChanged: (value) {
+                    gender = value ?? 2;
+                    setState(() {});
+                  }),
               Divider(),
               Text(
                 'Enter Your Details',
@@ -69,6 +87,10 @@ class SettingsScreen extends StatelessWidget {
                         labelText: 'Name',
                         helperText: 'Enter your name',
                       ),
+                      onChanged: (value) {
+                        name = value;
+                        setState(() {});
+                      },
                     ),
                     TextFormField(
                       initialValue: '',
@@ -76,6 +98,10 @@ class SettingsScreen extends StatelessWidget {
                         labelText: 'Email',
                         helperText: 'Enter your email',
                       ),
+                      onChanged: (value) {
+                        email = value;
+                        setState(() {});
+                      },
                     ),
                   ],
                 ),
