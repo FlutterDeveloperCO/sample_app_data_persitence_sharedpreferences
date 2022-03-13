@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sample_app_data_persistence/widgets/widgets.dart';
 
+import '../shared_preferences/preferences.dart';
+
 class HomeScreen extends StatelessWidget {
   static const String routerName = 'Home';
 
@@ -18,13 +20,13 @@ class HomeScreen extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('DarkMode:', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+          Text('DarkMode: ${Preferences.isDarkMode}', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
           Divider(),
-          Text('Username: ', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+          Text('Username: ${Preferences.name}', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
           Divider(),
-          Text('Email: ', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+          Text('Email: ${Preferences.email}', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
           Divider(),
-          Text('Gender: ', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+          Text('Gender: ${Preferences.gender}', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
         ],
       ),
     );
