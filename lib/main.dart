@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       title: 'Data Persistence',
       initialRoute: HomeScreen.routerName,
       routes: {
-        HomeScreen.routerName: (_) => const HomeScreen(),
+        HomeScreen.routerName: (_) => HomeScreen(),
         SettingsScreen.routerName: (_) => const SettingsScreen(),
       },
       theme: Provider.of<ThemeProvider>(context).currentTheme,

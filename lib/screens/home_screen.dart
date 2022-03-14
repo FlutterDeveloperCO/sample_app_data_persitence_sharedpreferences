@@ -5,11 +5,15 @@ import '../shared_preferences/preferences.dart';
 
 class HomeScreen extends StatelessWidget {
   static const String routerName = 'Home';
+  String _gender = '';
 
-  const HomeScreen({Key? key}) : super(key: key);
+  HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+
+    _isFemale();
+    
     return Scaffold(
       appBar: AppBar(
         elevation: 10,
@@ -26,9 +30,17 @@ class HomeScreen extends StatelessWidget {
           Divider(),
           Text('Email: ${Preferences.email}', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
           Divider(),
-          Text('Gender: ${Preferences.gender}', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+          Text('Gender: $_gender', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
         ],
       ),
     );
+  }
+
+  void _isFemale() {
+    if (Preferences.gender == 1) {
+      _gender = 'Male';
+    }else{
+      _gender = 'Female';
+    }
   }
 }
