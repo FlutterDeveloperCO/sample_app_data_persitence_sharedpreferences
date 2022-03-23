@@ -99,8 +99,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       initialValue: Preferences.email,
                       decoration: const InputDecoration(
                         labelText: 'Email',
-                        helperText: 'Enter your email',
+                        helperText: 'Enter your email',                        
                       ),
+                      keyboardType: TextInputType.emailAddress,
                       onChanged: (value) {
                         Preferences.email = value;
                         setState(() {});
